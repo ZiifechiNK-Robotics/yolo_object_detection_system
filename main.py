@@ -1,4 +1,16 @@
-# THE BRAIN #
+'''
+YOLO Object Detection and Dataset Generation System
+Written by: Ziifechi
+Date: February 2026
+
+Project Description:
+Using YOLOv8 and OpenCV, I've created a real-time object detection system
+It implements custom logic to classify known and unknown objects
+Unknown objects are stabilized across multiple frames and saved for future model training
+
+'''
+# TINKLE'S BRAIN #
+
 import cv2
 import time
 from ultralytics import YOLO
@@ -79,7 +91,7 @@ while True:
         for box in r.boxes:
 
             cls_id = int(box.cls[0])
-            label = model.names[cls_id] # why is there no more congidence
+            label = model.names[cls_id] 
             confidence = float(box.conf[0])
             print(f"Detected: {label}, Conf: {confidence}")
 
@@ -88,7 +100,7 @@ while True:
 
             x1,y1,x2,y2 = map(int,box.xyxy[0])
 
-            #cropping only detected crop
+            # cropping only unknown detected image
             crop = frame[y1:y2, x1:x2]
 
 
@@ -148,7 +160,6 @@ while True:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"{PLANT_CANDIDATE_DIR}/unknown_{timestamp}.jpg"
         
-        # Created because all my previously saved candidates were corrupted and had to be discarded
         if frame is not None:
             success = cv2.imwrite(filename, crop) 
 
@@ -187,4 +198,5 @@ while True:
         break
 
 cap.release()
+
 cv2.destroyAllWindows()
