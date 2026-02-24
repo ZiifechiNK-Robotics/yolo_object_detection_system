@@ -9,6 +9,7 @@ It implements custom logic to classify known and unknown objects
 Unknown objects are stabilized across multiple frames and saved for future model training
 
 '''
+
 # TINKLE'S BRAIN #
 
 import cv2
@@ -100,7 +101,7 @@ while True:
 
             x1,y1,x2,y2 = map(int,box.xyxy[0])
 
-            # cropping only unknown detected image
+            # cropping only unknown detected object
             crop = frame[y1:y2, x1:x2]
 
 
@@ -198,5 +199,4 @@ while True:
         break
 
 cap.release()
-
 cv2.destroyAllWindows()
