@@ -22,5 +22,5 @@ Unknown objects are then stabilized across many frames before they are automatic
 * Confidence-based refinement for unknown object detection
 
 # How to Run Code
-- Install dependencies: pip install -r requirements.txt
+- Install dependencies: pip install -r requisites.txt
 - Run the system: python main.py
