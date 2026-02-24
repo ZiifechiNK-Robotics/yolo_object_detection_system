@@ -1,0 +1,3 @@
+* ultalytics
+* opencv-python
+* numpy
